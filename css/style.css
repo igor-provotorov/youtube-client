@@ -1,0 +1,241 @@
+body {
+  height: 95vh;
+  margin: 0;
+  padding: 2vh 0;
+  background-color: #343d46;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+  --items-per-page: 4;
+}
+
+/**
+* Search
+*/
+
+.search {
+  margin-top: 1vh;
+  font-size: 0;
+  text-align: center;
+}
+
+.search .search-bar,
+.search .search-button {
+  min-height: 4vh;
+  margin: 0;
+  padding: 1px 10px;
+  border: hidden;
+  box-sizing: border-box;
+  background-color: white;
+  outline: none;
+  line-height: 2.5rem;
+  font-size: 1.5rem;
+}
+
+.search .search-button {
+  min-width: 5vw;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+}
+
+.search .search-button:hover {
+  background-color: rgba(255, 255, 255, 0.65);
+}
+
+.search .search-bar {
+  min-width: 60%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+/**
+* Search results
+*/
+
+.search-result-container {
+  overflow: hidden;
+  white-space: nowrap;
+  transition: all ease-out 2s;
+}
+
+.search-result-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100vw;
+  cursor: grab;
+}
+
+.search-result-wrapper:active {
+  cursor: grabbing;
+}
+
+.search-result-page {
+  min-height: 70vh;
+  margin-top: 5vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  white-space: initial;
+}
+
+.search-result-page .item {
+  max-width: 20vw;
+  position: relative;
+  background-color: white;
+  border-radius: 5px;
+  padding-top: 1vh;
+}
+
+.search-result-page .item .title {
+  width: 100%;
+  position: absolute;
+  top: 8%;
+  padding: 2%;
+  background: rgba(255, 0, 0, 0.65);
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+
+.search-result-page .item .title:hover {
+  background: rgba(255, 0, 0, 0.9);
+}
+
+.search-result-page .item .title-image {
+  width: 100%;
+}
+
+.search-result-page .item .info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 15%;
+  margin-top: 5%;
+}
+
+.search-result-page .info .info-icon,
+.search-result-page .info .info-value {
+  text-align: center;
+}
+
+.search-result-page .info .info-icon {
+  width: 20%;
+  margin: 3% 0;
+  font-size: 2rem;
+  color: #6f6c6d;
+}
+
+.search-result-page .info .info-value {
+  width: 80%;
+  margin: 0;
+  box-sizing: border-box;
+  font-weight: bold;
+}
+
+.search-result-page .item .description {
+  min-height: 90px;
+  max-height: 90px;
+  font-style: italic;
+  padding: 0 2%;
+  overflow: hidden;
+}
+
+/**
+* Pagination 
+*/
+
+.pagination {
+  margin-top: 5vh;
+  text-align: center;
+}
+
+.pagination .page {
+  min-height: 1.5rem;
+  min-width: 1.5rem;
+  display: inline-block;
+  position: relative;
+  margin: 0 5px;
+  border-radius: 50%;
+  background-color: white;
+  border: 0.125rem solid white;
+  color: white;
+  vertical-align: middle;
+  line-height: 1.5rem;
+}
+
+.pagination .page:hover,
+.pagination .page.active {
+  background-color: red;
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+.pagination .page.selected::after {
+  background-color: white;
+  color: black;
+  border-radius: 10%;
+  content: attr(data-value);
+  padding: 5px;
+  position: absolute;
+  top: -180%;
+  left: 0;
+}
+
+@media only screen and (max-width: 1300px) {
+  body {
+    --items-per-page: 3;
+  }
+
+  .search-result-page .item {
+    max-width: 30vw;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  body {
+    --items-per-page: 2;
+  }
+
+  .search-result-page .item {
+    max-width: 40vw;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  body {
+    --items-per-page: 1;
+  }
+
+  .search-result-page {
+    margin-top: 2vh;
+    min-height: 65vh;
+  }
+
+  .search-result-page .info .info-icon {
+    margin: 0;
+  }
+
+  .search-result-page .item {
+    max-width: 80vw;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  body {
+    padding: 0;
+    font-size: 14px;
+  }
+
+  .search-result-page {
+    margin-top: 2vh;
+    min-height: 70vh;
+  }
+
+  .search-result-page .info .info-icon {
+    margin: 0;
+  }
+}
